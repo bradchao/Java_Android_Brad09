@@ -2,8 +2,11 @@ package tw.org.iii.brad09;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -45,6 +48,22 @@ public class MainActivity extends AppCompatActivity {
         adapter = new SimpleAdapter(this,data,R.layout.listitem,
                 from,to);
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(MainActivity.this, "Click: "+i, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(MainActivity.this, "LongClick: "+i, Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
+
 
 
     }
