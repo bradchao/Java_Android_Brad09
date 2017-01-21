@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
     private String[] from = {"brad1","brad2"};
     private int[] to = {R.id.item_title, R.id.item_content};
 
+    private EditText input;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        input = (EditText)findViewById(R.id.newdata);
         listView = (ListView)findViewById(R.id.listView);
         initListView();
     }
@@ -65,6 +69,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+    }
+
+    public void addData(View v){
+        String title = input.getText().toString();
+        String cont = "OK";
+
+        HashMap<String,String> itemdata = new HashMap<>();
+        itemdata.put(from[0], title);
+        itemdata.put(from[1], cont);
+        data.add(itemdata);
+
+        adapter.notifyDataSetChanged();
 
     }
 
