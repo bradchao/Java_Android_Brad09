@@ -1,5 +1,6 @@
 package tw.org.iii.brad09;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -56,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, "Click: "+i, Toast.LENGTH_SHORT).show();
+                Intent it = new Intent(MainActivity.this, Main2Activity.class);
+                startActivity(it);
             }
         });
 
