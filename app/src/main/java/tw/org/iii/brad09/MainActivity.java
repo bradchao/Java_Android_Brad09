@@ -63,13 +63,19 @@ public class MainActivity extends AppCompatActivity {
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MainActivity.this, "LongClick: "+i, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "LongClick: "+i, Toast.LENGTH_SHORT).show();
+                removeData(i);
                 return true;
             }
         });
 
 
 
+    }
+
+    private void removeData(int i){
+        data.remove(i);
+        adapter.notifyDataSetChanged();
     }
 
     public void addData(View v){
